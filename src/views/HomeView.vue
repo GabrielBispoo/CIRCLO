@@ -44,6 +44,69 @@
           </div>
         </div>
       </section>
+
+      <section id="gallery-photos">
+        <div class="ranking-weekly">
+          <div class="title-ranking">
+            <h1>
+              Parabéns aos ganhadores desta semana!
+              <span class="emoji-bx-02"
+                ><img src="/glowing-star-emoji.png" alt="" /></span
+              ><span class="emoji-bx-02"
+                ><img src="/clapping-hands-emoji.png" alt=""
+              /></span>
+              Quem mais brilhou?
+              <span class="emoji-bx-02"
+                ><img src="/thinking-face-emoji.png" alt="" /></span
+              ><span class="emoji-bx-02"
+                ><img src="/sparkles-emoji.png" alt=""
+              /></span>
+            </h1>
+          </div>
+
+          <div class="ranking-podium">
+            <div class="second-place ranking-photo">
+              <img src="/gato-01.jpg" alt="second-photo" />
+            </div>
+            <div class="first-place ranking-photo">
+              <img src="/gato-02.jpg" alt="first-photo" />
+            </div>
+            <div class="third-place ranking-photo">
+              <img src="/gato-03.jpg" alt="third-place" />
+            </div>
+          </div>
+
+          <div class="sub-title-comp">
+            <p>
+              Publique sua foto mais estranha e engraçada e vamos ver quem
+              recebe mais votos da comunidade! #SucessoDaSemana.
+            </p>
+          </div>
+
+          <div class="gallery-box-photos">
+            <div class="title-box-grid">
+              <h2>
+                Confira os inscritos desta semana e escolha quem merece
+                brilhar!<span class="emoji-bx-02"
+                  ><img src="/inbox-tray-emoji.png" alt="" /></span
+                ><span class="emoji-bx-02"
+                  ><img src="/star-struck-emoji.png" alt=""
+                /></span>
+              </h2>
+            </div>
+
+            <div class="grid-gallery-photos">
+              <div
+                class="card-fig"
+                v-for="(figurinha, index) in figurinhas"
+                :key="index"
+              >
+                <img :src="figurinha.url" :alt="figurinha.alt" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>
@@ -52,6 +115,14 @@
 export default {
   data() {
     return {
+      figurinhas: [
+        { url: "/gato-01.jpg", alt: "" },
+        { url: "/gato-02.jpg", alt: "" },
+        { url: "/gato-03.jpg", alt: "" },
+        { url: "/gato-04.jpg", alt: "" },
+        { url: "/gato-05.jpg", alt: "" },
+        { url: "/gato-06.jpg", alt: "" },
+      ],
     };
   },
 };
@@ -285,6 +356,14 @@ main {
   }
 }
 
+.emoji-bx img {
+  width: 5vw;
+}
+
+.emoji-bx-02 img {
+  width: 3vw;
+}
+
 /* HOME BANNER */
 
 #Home-Banner {
@@ -328,10 +407,6 @@ main {
 #messages-allDay {
   background-color: var(--Ermine-White);
   padding: 30px 5px;
-}
-
-.emoji-bx img {
-  width: 5vw;
 }
 
 .text-input {
@@ -388,7 +463,95 @@ main {
   border-radius: 70px;
 }
 
-/* MEDIA SIZE */ 
+/* PODIUM PHOTOS */
+
+.title-ranking {
+  width: 65%;
+  text-align: left;
+  margin: 120px 0;
+}
+
+.title-ranking h1 {
+  font-family: "IBM Plex Mono Regular";
+  font-size: 3.5em;
+}
+
+#gallery-photos {
+  padding: 50px;
+}
+
+.ranking-podium {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  margin: 200px 50px;
+  height: 69vh;
+}
+
+.ranking-photo img {
+  border-width: 24px 24px 110px 24px;
+  border-style: solid;
+  border-color: white;
+  width: 424px;
+  height: 395px;
+}
+
+.first-place {
+  position: absolute;
+  rotate: 10deg;
+  left: 48%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.second-place {
+  position: absolute;
+  rotate: -7deg;
+  left: 0;
+}
+
+.third-place {
+  position: absolute;
+  right: 0;
+  rotate: 4deg;
+}
+
+.sub-title-comp p {
+  font-family: var(--Font-Mono-Regular);
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.sub-title-comp {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.title-box-grid {
+  font-family: var(--Font-Mono-Regular);
+  width: 70%;
+  margin: 50px auto;
+}
+
+.gallery-box-photos {
+  margin-top: 350px;
+}
+
+.grid-gallery-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  max-width: 1800px;
+  margin: 100px auto;
+  justify-items: start;
+}
+
+.card-fig img {
+  width: 30vw;
+  height: -webkit-fill-available;
+  border-radius: 20px;
+}
+
+/* MEDIA SIZE */
 
 @media (max-width: 1200px) {
   .left,
@@ -421,7 +584,6 @@ main {
   }
 }
 
-
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 2.5em !important;
@@ -446,7 +608,6 @@ main {
   #Home-Banner {
     padding: 400px 0;
   }
-
 }
 
 @media screen and (max-width: 400px) {
